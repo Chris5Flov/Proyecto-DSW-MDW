@@ -3,26 +3,32 @@
    ========================================================================== */
 
 :root {
-    --color-primario: #1f6feb;
-    --color-fondo: #f6f7f9;
-    --color-superficie: #fff;
-    --color-texto: #1d2129;
-    --color-borde: #d8dde3;
+    /* Paleta base */
+    --color-primario: #381820;          /* Vino oscuro: botones y acentos */
+    --color-primario-hover: #4f232e;    /* Vino oscuro aclarado para hover */
+    --color-fondo: #DAC1A3;             /* Beige principal del fondo */
+    --color-superficie: #FAF7F2;        /* Blanco hueso cálido para tarjetas */
+    --color-superficie-suave: #EBD8C1;  /* Beige suave para zonas secundarias */
+    --color-texto: #231116;             /* Tinta oscura cálida (mejor que negro puro) */
+    --color-texto-sobre-oscuro: #FAFAF7;/* Blanco hueso sobre #381820 */
+    --color-borde: #381820;             /* Bordes definidos en vino */
+
     --color-exito: #1a7f37;
     --color-peligro: #cf222e;
     --color-aviso: #bf8700;
     --color-coccion: #e16f24;
+
     --radio: 0.5rem;
     --espacio: 1rem;
 
-    --color-texto-secundario: #5b6470;
-    --color-primario-suave: #e8f0fe;
+    --color-texto-secundario: #5c494e;
+    --color-primario-suave: #EAD7C2;
     --color-exito-suave: #e6f4ea;
     --color-peligro-suave: #fdecee;
     --color-aviso-suave: #fff6d6;
     --color-coccion-suave: #fdeee3;
-    --color-neutro-suave: #eef0f3;
-    --sombra: 0 1px 2px rgba(29, 33, 41, 0.06), 0 1px 3px rgba(29, 33, 41, 0.08);
+    --color-neutro-suave: #EBD8C1;
+    --sombra: 0 4px 16px rgba(56, 24, 32, 0.08), 0 1px 3px rgba(56, 24, 32, 0.12);
     --fuente: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -43,7 +49,8 @@ body {
     font-size: 0.9375rem;
     line-height: 1.45;
     color: var(--color-texto);
-    background: var(--color-fondo);
+    background-color: var(--color-fondo);
+    background-image: radial-gradient(circle at top, rgba(250, 250, 247, 0.28), transparent 60%);
     overflow-x: hidden;
 }
 
@@ -73,6 +80,10 @@ p {
     text-underline-offset: 2px;
 }
 
+.enlace:hover {
+    color: var(--color-primario-hover);
+}
+
 .enlace:focus-visible {
     outline: 3px solid var(--color-primario);
     outline-offset: 2px;
@@ -90,9 +101,15 @@ p {
     align-items: stretch;
     gap: 0.5rem;
     padding: 0.625rem var(--espacio);
-    background: var(--color-superficie);
-    border-bottom: 1px solid var(--color-borde);
+    background: var(--color-primario);
+    color: var(--color-texto-sobre-oscuro);
+    border-bottom: 1px solid rgba(250, 250, 247, 0.14);
     box-shadow: var(--sombra);
+}
+
+.encabezado a,
+.encabezado .enlace {
+    color: var(--color-texto-sobre-oscuro);
 }
 
 .encabezado__marca {
@@ -107,6 +124,7 @@ p {
 .encabezado__titulo {
     font-size: 1.15rem;
     font-weight: 700;
+    color: var(--color-texto-sobre-oscuro);
 }
 
 .navegacion {
@@ -123,7 +141,7 @@ p {
     justify-content: center;
     padding: 0.4rem 0.65rem;
     border-radius: var(--radio);
-    color: var(--color-texto);
+    color: var(--color-texto-sobre-oscuro);
     text-decoration: none;
     border-bottom: 3px solid transparent;
     min-width: 0;
@@ -131,11 +149,11 @@ p {
 }
 
 .pestana:hover {
-    background: var(--color-neutro-suave);
+    background: rgba(250, 250, 247, 0.1);
 }
 
 .pestana:focus-visible {
-    outline: 3px solid var(--color-primario);
+    outline: 3px solid var(--color-texto-sobre-oscuro);
     outline-offset: 2px;
 }
 
@@ -146,17 +164,17 @@ p {
 
 .pestana__actor {
     font-size: 0.7rem;
-    color: var(--color-texto-secundario);
+    color: rgba(250, 250, 247, 0.78);
 }
 
 .pestana--activa {
-    background: var(--color-primario-suave);
-    border-bottom-color: var(--color-primario);
-    color: var(--color-primario);
+    background: rgba(250, 250, 247, 0.16);
+    border-bottom-color: var(--color-fondo);
+    color: var(--color-texto-sobre-oscuro);
 }
 
 .pestana--activa .pestana__actor {
-    color: var(--color-primario);
+    color: var(--color-fondo);
 }
 
 .barra-usuario {
@@ -166,7 +184,7 @@ p {
     flex-wrap: wrap;
     gap: 0.5rem;
     padding-top: 0.35rem;
-    border-top: 1px solid var(--color-borde);
+    border-top: 1px solid rgba(250, 250, 247, 0.16);
 }
 
 .barra-usuario:empty {
@@ -237,10 +255,10 @@ p {
 
 .tarjeta {
     background: var(--color-superficie);
-    border: 1px solid var(--color-borde);
+    border: 1px solid rgba(56, 24, 32, 0.22);
     border-radius: var(--radio);
     box-shadow: var(--sombra);
-    padding: var(--espacio);
+    padding: calc(var(--espacio) * 1.25);
     display: flex;
     flex-direction: column;
     gap: var(--espacio);
@@ -249,7 +267,8 @@ p {
 }
 
 .tarjeta__titulo {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    color: var(--color-primario);
 }
 
 .tarjeta__subtitulo {
@@ -274,7 +293,7 @@ p {
 
 .separador {
     border: 0;
-    border-top: 1px solid var(--color-borde);
+    border-top: 1px solid rgba(56, 24, 32, 0.16);
     margin: 0;
 }
 
@@ -304,9 +323,9 @@ p {
     margin-top: auto;
     padding: 0.85rem var(--espacio);
     text-align: center;
-    border-top: 1px solid var(--color-borde);
-    background: var(--color-superficie);
-    color: var(--color-texto-secundario);
+    border-top: 1px solid rgba(56, 24, 32, 0.18);
+    background: var(--color-primario);
+    color: var(--color-texto-sobre-oscuro);
     font-size: 0.82rem;
 }
 
@@ -315,7 +334,7 @@ p {
 .tabla-contenedor {
     width: 100%;
     overflow-x: auto;
-    border: 1px solid var(--color-borde);
+    border: 1px solid rgba(56, 24, 32, 0.22);
     border-radius: var(--radio);
 }
 
@@ -329,7 +348,7 @@ p {
 .tabla td {
     padding: 0.5rem 0.625rem;
     text-align: left;
-    border-bottom: 1px solid var(--color-borde);
+    border-bottom: 1px solid rgba(56, 24, 32, 0.14);
     vertical-align: middle;
 }
 
@@ -385,6 +404,7 @@ p {
 .campo__etiqueta {
     font-size: 0.85rem;
     font-weight: 600;
+    color: var(--color-primario);
 }
 
 .campo__ayuda {
@@ -399,17 +419,21 @@ input[type="password"],
 select {
     width: 100%;
     min-width: 0;
-    padding: 0.55rem 0.65rem;
+    padding: 0.6rem 0.7rem;
     font: inherit;
     color: var(--color-texto);
-    background: var(--color-superficie);
-    border: 1px solid var(--color-borde);
+    background: #ffffff;
+    border: 1px solid rgba(56, 24, 32, 0.32);
     border-radius: 0.375rem;
+}
+
+input::placeholder {
+    color: #8c7a7f;
 }
 
 input:focus-visible,
 select:focus-visible {
-    outline: 3px solid var(--color-primario-suave);
+    outline: 3px solid rgba(56, 24, 32, 0.18);
     border-color: var(--color-primario);
 }
 
@@ -465,7 +489,7 @@ select:disabled {
     border-radius: 0.375rem;
     border: 1px solid var(--color-borde);
     background: var(--color-superficie);
-    color: var(--color-texto);
+    color: var(--color-primario);
     cursor: pointer;
     transition: background-color 0.12s, border-color 0.12s, opacity 0.12s;
 }
@@ -491,17 +515,18 @@ select:disabled {
 .boton--primario {
     background: var(--color-primario);
     border-color: var(--color-primario);
-    color: #fff;
+    color: var(--color-texto-sobre-oscuro);
 }
 
 .boton--primario:hover:not(:disabled) {
-    background: #1a5fcc;
+    background: var(--color-primario-hover);
+    border-color: var(--color-primario-hover);
 }
 
 .boton--peligro {
     background: var(--color-peligro);
     border-color: var(--color-peligro);
-    color: #fff;
+    color: var(--color-texto-sobre-oscuro);
 }
 
 .boton--peligro:hover:not(:disabled) {
@@ -510,6 +535,7 @@ select:disabled {
 
 .boton--secundario {
     background: var(--color-superficie);
+    color: var(--color-primario);
 }
 
 .boton--pequeno {
@@ -571,7 +597,7 @@ select:disabled {
 .insignia--mesero {
     background: var(--color-primario-suave);
     color: var(--color-primario);
-    border-color: #a8c7fa;
+    border-color: rgba(56, 24, 32, 0.25);
 }
 
 .insignia--pago-pendiente,
@@ -591,7 +617,7 @@ select:disabled {
 .insignia--exclusion {
     background: var(--color-superficie);
     color: var(--color-texto-secundario);
-    border-color: var(--color-borde);
+    border-color: rgba(56, 24, 32, 0.25);
 }
 
 /* ---------------------------------------------------------------- órdenes */
@@ -615,7 +641,7 @@ select:disabled {
     font: inherit;
     color: inherit;
     background: var(--color-superficie);
-    border: 1px solid var(--color-borde);
+    border: 1px solid rgba(56, 24, 32, 0.22);
     border-radius: var(--radio);
     cursor: pointer;
 }
@@ -679,7 +705,7 @@ select:disabled {
     gap: 0.25rem 1rem;
     margin: 0;
     padding: 0.75rem;
-    background: var(--color-fondo);
+    background: var(--color-neutro-suave);
     border-radius: var(--radio);
     font-variant-numeric: tabular-nums;
 }
@@ -698,7 +724,7 @@ select:disabled {
     font-weight: 700;
     color: var(--color-texto) !important;
     padding-top: 0.375rem;
-    border-top: 1px solid var(--color-borde);
+    border-top: 1px solid rgba(56, 24, 32, 0.22);
 }
 
 .lista-pagos {
@@ -716,7 +742,7 @@ select:disabled {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 0.625rem;
-    border: 1px solid var(--color-borde);
+    border: 1px solid rgba(56, 24, 32, 0.22);
     border-radius: 0.375rem;
     font-size: 0.9rem;
 }
@@ -773,7 +799,7 @@ select:disabled {
 
 .tarjeta-cocina {
     background: var(--color-superficie);
-    border: 1px solid var(--color-borde);
+    border: 1px solid rgba(56, 24, 32, 0.22);
     border-radius: var(--radio);
     padding: 0.75rem;
     display: flex;
@@ -844,7 +870,7 @@ select:disabled {
     text-align: center;
     min-height: 3.25rem;
     padding: 0.625rem 0.5rem;
-    border: 2px solid var(--color-borde);
+    border: 2px solid rgba(56, 24, 32, 0.28);
     border-radius: var(--radio);
     background: var(--color-superficie);
     font-weight: 600;
@@ -920,7 +946,7 @@ select:disabled {
     gap: 0.625rem;
     padding: 0.625rem 0.75rem;
     border-radius: var(--radio);
-    color: #fff;
+    color: var(--color-texto-sobre-oscuro);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
     animation: aparecer 0.18s ease-out;
 }
@@ -963,7 +989,7 @@ select:disabled {
     align-items: center;
     justify-content: center;
     padding: var(--espacio);
-    background: rgba(29, 33, 41, 0.45);
+    background: rgba(56, 24, 32, 0.45);
 }
 
 .modal {
@@ -981,6 +1007,7 @@ select:disabled {
 
 .modal__titulo {
     font-size: 1.15rem;
+    color: var(--color-primario);
 }
 
 .modal__acciones {
@@ -1009,11 +1036,11 @@ select:disabled {
         align-items: center;
         justify-content: space-between;
         gap: var(--espacio);
-        padding: 0.7rem 1.5rem;
+        padding: 0.75rem 1.5rem;
     }
 
     .encabezado__titulo {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
     }
 
     .barra-usuario {
