@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión — OMAKASE</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script type="module" src="js/auth/login.js"></script>
+</head>
+<body class="pagina">
+    <header class="encabezado">
+        <div class="encabezado__marca">
+            <h1 class="encabezado__titulo">Restaurante OMAKASE</h1>
+        </div>
+        <nav class="navegacion" aria-label="Acceso público">
+            <a class="pestana pestana--activa" href="login.html" aria-current="page">
+                <span class="pestana__nombre">Iniciar sesión</span>
+            </a>
+            <a class="pestana" href="registro.html">
+                <span class="pestana__nombre">Registrarse</span>
+            </a>
+        </nav>
+    </header>
+
+    <main id="contenido" class="contenido contenido--centrado" tabindex="-1">
+        <div class="auth-pila">
+            <img class="auth-logo" src="img/logo.png" alt="OMAKASE, desde 2026" width="488" height="443">
+            <section class="tarjeta auth-tarjeta" aria-labelledby="titulo-login">
+                <div class="pila">
+                    <h2 id="titulo-login" class="vista__titulo">Iniciar sesión</h2>
+                    <p class="texto-secundario">Ingresa con tu usuario o correo electrónico para acceder al sistema.</p>
+                </div>
+
+                <form id="form-login" class="formulario" novalidate>
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="login-identificador">Usuario o correo electrónico</label>
+                        <input
+                            type="text"
+                            id="login-identificador"
+                            name="identificador"
+                            required
+                            minlength="3"
+                            maxlength="120"
+                            autocomplete="username"
+                            placeholder="mesero o mesero@restaurante.local">
+                    </div>
+
+                    <div class="campo">
+                        <label class="campo__etiqueta" for="login-password">Contraseña</label>
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            required
+                            minlength="6"
+                            maxlength="128"
+                            autocomplete="current-password"
+                            placeholder="••••••••">
+                    </div>
+
+                    <p id="login-error" class="texto-error" role="alert" hidden></p>
+
+                    <button id="login-boton" type="submit" class="boton boton--primario boton--grande">
+                        Iniciar sesión
+                    </button>
+                </form>
+
+                <hr class="separador">
+                <p class="texto-secundario">
+                    ¿No tienes cuenta? <a class="enlace" href="registro.html">Crea una cuenta aquí</a>.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="pie">
+        <p>OMAKASE · Acceso autenticado por rol</p>
+    </footer>
+
+    <div id="notificaciones" class="notificaciones" aria-live="polite"></div>
+</body>
+</html>
